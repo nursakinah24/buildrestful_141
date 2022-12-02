@@ -4,10 +4,20 @@
  */
 package pws.a.learningRESTful;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 /**
  *
  * @author Asus
  */
-public class ProductNotfoundException {
+public class ProductNotfoundException extends RuntimeException {
+    private static final long serialVersionUID = 1L;
     
+    @RequestMapping(value = "/products/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Object> updateProduct(){
+        throw new ProductNotfoundException();
+    }
 }
