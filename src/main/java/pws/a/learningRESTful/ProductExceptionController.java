@@ -19,4 +19,9 @@ public class ProductExceptionController {
    public ResponseEntity<Object> exception(ProductNotfoundException exception) {
       return new ResponseEntity<>("Product not found", HttpStatus.NOT_FOUND);
    }
+   
+     @ExceptionHandler(value = ProductAlreadyExistException.class)
+   public ResponseEntity<Object> exception(ProductAlreadyExistException exception) {
+      return new ResponseEntity<>("Product already exist", HttpStatus.ALREADY_REPORTED);
+   }
 }
