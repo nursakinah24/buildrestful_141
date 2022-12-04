@@ -41,8 +41,13 @@ public class Controller {
     
     @RequestMapping(value = "/products", method = RequestMethod.POST)
     public ResponseEntity<Object> createProduct(@RequestBody Product product) {
-        productRepo.put(product.getId(), product);
+        if(productRepo.containsKey(product.getId())){
+            return new ResponseEntity<>("Product Id is already exists. Please enter another Id.", HttpStatus.OK);
+        }
+        else {
+            productRepo.put(product.getId(), product);
         return new ResponseEntity<>("Product is created successfully", HttpStatus.CREATED);
+        }
     }
     
     @RequestMapping(value = "/products/{id}", method = RequestMethod.PUT)
