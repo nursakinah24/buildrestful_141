@@ -11,9 +11,9 @@ package model;
 public class Product {
     private String id;
     private String name;
-    private int price;
-    private int disc;
-    private int total;
+    private double price;
+    private double disc;
+    private double total;
 
     public String getId() {
         return id;
@@ -31,27 +31,27 @@ public class Product {
         this.name = name;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public int getDisc() {
+    public double getDisc() {
         return disc;
     }
 
-    public void setDisc(int disc) {
+    public void setDisc(double disc) {
         this.disc = disc;
     }
 
-    public int getTotal() {
+    public double getTotal() {
         return total;
     }
 
-    public void setTotal(int total) {
+    public void setTotal(double total) {
         this.total = total;
     }
 
