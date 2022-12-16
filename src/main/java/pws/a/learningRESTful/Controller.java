@@ -32,6 +32,9 @@ public class Controller {
         honey.setId("1");
         //calling honey and method setName
         honey.setName("Honey");
+        honey.setPrice(35000.0);
+        honey.setDisc(0.05);
+        honey.setTotal();
         //insert a mapping into a map
         productRepo.put(honey.getId(), honey);
         
@@ -41,8 +44,13 @@ public class Controller {
         almond.setId("2");
         //calling almond and method setName
         almond.setName("Almond");
+        almond.setPrice(50000.0);
+        almond.setDisc(0.1);
+        almond.setTotal();
         //insert a mapping into a map
         productRepo.put(almond.getId(), almond);
+        
+        
     }
     
     //annotation that used to define the Request URI to access the REST Endpoints
@@ -62,6 +70,7 @@ public class Controller {
             return new ResponseEntity<>("Product Id is already exists. Please enter another Id.", HttpStatus.OK);
         }
         else {
+            product.setTotal();
             //else the product Id is new
             productRepo.put(product.getId(), product);
             //return Product is created
@@ -79,6 +88,7 @@ public class Controller {
         productRepo.remove(id);
         //set Id
         product.setId(id);
+        product.setTotal();
         //insert a mapping into a map 
         productRepo.put(id, product);
         //return response entity that product is update
