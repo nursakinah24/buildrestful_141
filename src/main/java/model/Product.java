@@ -11,6 +11,9 @@ package model;
 public class Product {
     private String id;
     private String name;
+    private int price;
+    private int disc;
+    private int total;
 
     public String getId() {
         return id;
@@ -28,5 +31,28 @@ public class Product {
         this.name = name;
     }
 
-   
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getDisc() {
+        return disc;
+    }
+
+    public void setDisc(int disc) {
+        this.disc = disc;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
 }
