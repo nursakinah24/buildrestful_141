@@ -51,8 +51,9 @@ public class Product {
         return total;
     }
 
-    public void setTotal() {
-        this.total = price - (price * disc);
+    //set total with operation
+    public void setTotal(Double total) {
+        this.total = total;
     }
 
 }

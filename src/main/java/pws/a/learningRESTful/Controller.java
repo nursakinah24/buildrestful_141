@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 //public class controller
 public class Controller {
+    private Double totalAmount;
     //hash map method used to storing data
     private static Map<String, Product> productRepo = new HashMap<>();
     static {
@@ -32,10 +33,16 @@ public class Controller {
         honey.setId("1");
         //calling honey and method setName
         honey.setName("Honey");
+        //set Price
         honey.setPrice(35000.0);
+        //set Disc
         honey.setDisc(0.05);
-        honey.setTotal();
+        //set Total
         //insert a mapping into a map
+        Double totalDiscount = honey.getPrice() * honey.getDisc();
+        Double totalAmount = honey.getPrice() - totalDiscount;
+        honey.setTotal(totalAmount);
+        
         productRepo.put(honey.getId(), honey);
         
         //initialization product honey
@@ -46,7 +53,7 @@ public class Controller {
         almond.setName("Almond");
         almond.setPrice(50000.0);
         almond.setDisc(0.1);
-        almond.setTotal();
+        almond.setTotal(0.0);
         //insert a mapping into a map
         productRepo.put(almond.getId(), almond);
         
@@ -70,7 +77,7 @@ public class Controller {
             return new ResponseEntity<>("Product Id is already exists. Please enter another Id.", HttpStatus.OK);
         }
         else {
-            product.setTotal();
+            product.setTotal(totalAmount);
             //else the product Id is new
             productRepo.put(product.getId(), product);
             //return Product is created
@@ -88,7 +95,7 @@ public class Controller {
         productRepo.remove(id);
         //set Id
         product.setId(id);
-        product.setTotal();
+        product.setTotal(totalAmount);
         //insert a mapping into a map 
         productRepo.put(id, product);
         //return response entity that product is update
